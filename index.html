@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="خَبْصَة - منصة الألعاب الاجتماعية العربية. اللعب بلّش والخبصة علينا!" />
+    <meta name="theme-color" content="#7c3aed" />
+    <title>خَبْصَة | منصة الألعاب العربية</title>
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="خَبْصَة | منصة الألعاب الاجتماعية العربية" />
+    <meta property="og:description" content="اللعب بلّش والخبصة علينا! 7 ألعاب حفلات مع أصحابك" />
+    <meta property="og:type" content="website" />
+    
+    <!-- Preconnect for fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet" />
+
+    <style>
+      /* Loading screen */
+      #loading {
+        position: fixed;
+        inset: 0;
+        background: #0a0a0f;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+        transition: opacity 0.5s;
+      }
+      #loading.hidden {
+        opacity: 0;
+        pointer-events: none;
+      }
+      .loading-logo {
+        font-family: 'Cairo', sans-serif;
+        font-size: 4rem;
+        font-weight: 900;
+        background: linear-gradient(135deg, #fff, #a855f7, #06b6d4);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        animation: pulse 1.5s ease-in-out infinite;
+      }
+      @keyframes pulse {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.5; }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="loading">
+      <div class="text-center">
+        <div class="loading-logo">خَبْصَة</div>
+        <div style="color: rgba(148,163,184,0.5); font-family: Cairo; font-size: 0.875rem; margin-top: 0.5rem;">جاري التحميل...</div>
+      </div>
+    </div>
+    
+    <div id="root"></div>
+    
+    <script type="module" src="/src/main.tsx"></script>
+    <script>
+      window.addEventListener('load', () => {
+        setTimeout(() => {
+          const loading = document.getElementById('loading')
+          if (loading) {
+            loading.classList.add('hidden')
+            setTimeout(() => loading.remove(), 500)
+          }
+        }, 1000)
+      })
+    </script>
+  </body>
+</html>
